@@ -8,16 +8,19 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "Testop")
 public class Testop extends OpMode {
-    public DcMotor test1;
-    public Servo test2;
-    double pos;
+    private DcMotor MotorFrontRight;
+    private DcMotor MotorFrontLeft;
+    private DcMotor MotorBackRight;
+    private DcMotor MotorBackLeft;
+    
 
 
     @Override
     public void init() {
-        test1 = hardwareMap.dcMotor.get("test1");
-        test2 = hardwareMap.servo.get("test2");
-        pos = 0;
+        MotorBackLeft = hardwareMap.dcMotor.get("MotorBackLeft");
+        MotorBackRight = hardwareMap.dcMotor.get("MotorBackRight");
+        MotorFrontLeft = hardwareMap.dcMotor.get("MotorFrontLeft");
+        MotorFrontRight = hardwareMap.dcMotor.get("MotorFrontRight")
     }
 
     @Override
