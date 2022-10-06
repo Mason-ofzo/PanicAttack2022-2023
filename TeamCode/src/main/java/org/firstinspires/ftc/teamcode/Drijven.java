@@ -35,8 +35,13 @@ public class Drijven extends OpMode {
 
     @Override
     public void loop() {
-        motorRightBack.setPower(gamepad1.left_stick_x);
+        //moeten alleen nog schuin
+        motorRightBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x);
+        motorLeftBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x*-1);
+        motorRightFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x);
+        motorLeftFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x*-1);
+      
     }
-
+    
 
 }
