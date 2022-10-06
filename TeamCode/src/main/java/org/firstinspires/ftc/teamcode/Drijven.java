@@ -6,10 +6,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class Drijven extends OpMode {
-    DcMotor motorLeftFront;
-    DcMotor motorRightFront;
-    DcMotor motorLeftBack;
-    DcMotor motorRightBack;
+    private DcMotor motorLeftFront;
+    private DcMotor motorRightFront;
+    private DcMotor motorLeftBack;
+    private DcMotor motorRightBack;
+    private double x;
+    private double y;
+    private double TurnRate;
     'armmotor' motorGrabinator;
     'pionhouder'motorConeHolder;
     // de dingen tussen hoge kommas moeten nog worden vervangen met de motornamen
@@ -24,6 +27,7 @@ public class Drijven extends OpMode {
         motorGrabinator = hardwareMap.'armmotor'.get("armextender);
         motorConeHolder = hardwareMap.'pionhouder'.get("mond");
         // de dingen tussen hoge kommas moeten nog worden vervangen met de motornamen
+        
     }
 
 
@@ -40,12 +44,15 @@ public class Drijven extends OpMode {
 
     @Override
     public void loop() {
+        x=gamepad1.left_stick_x;
+        y=gamepad1.left_stick_y;
+        TurnRate= gamepad1.right_trigger-gamepad1.left_trigger
         
-        motorRightBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x+gamepad1.left_stick_xy);
-        motorLeftBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x*-1+gamepad1.left_stick_xy*-1);
-        motorRightFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x+gamepad1.left_stick_xy*-1);
-        motorLeftFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x*-1+gamepad1.left_stick_xy);
-        motograbinator.setPower(gamepad2.right_button+gamepad2.left_button*-1);
+        motorRightBack.setPower(y+x+turnrate);
+        motorLeftBack.setPower(-y+x+TurnRate);
+        motorRightFront.setPower(-y+x-Turnrate);
+        motorLeftFront.setPower(y+x-TurnRate);
+        motograbinator.setPower(gamepad2.right_bumper+gamepad2.left_bumper*-1);
         motorconeholder.setPower(gamepad2.A+gamepad2.X*-1);
         // moet nog getest worden
     }
