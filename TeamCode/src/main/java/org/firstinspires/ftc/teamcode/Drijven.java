@@ -40,13 +40,14 @@ public class Drijven extends OpMode {
 
     @Override
     public void loop() {
-        //moeten alleen nog schuin
-        motorRightBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x);
-        motorLeftBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x*-1);
-        motorRightFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x);
-        motorLeftFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x*-1);
+        
+        motorRightBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x+gamepad1.left_stick_xy);
+        motorLeftBack.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x*-1+gamepad1.left_stick_xy*-1);
+        motorRightFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x+gamepad1.right_stick_x+gamepad1.left_stick_xy*-1);
+        motorLeftFront.setPower(gamepad1.left_stick_y+gamepad1.left_stick_x*-1+gamepad1.right_stick_x*-1+gamepad1.left_stick_xy);
         motograbinator.setPower(gamepad2.right_button+gamepad2.left_button*-1);
         motorconeholder.setPower(gamepad2.A+gamepad2.X*-1);
+        // moet nog getest worden
     }
     
 
