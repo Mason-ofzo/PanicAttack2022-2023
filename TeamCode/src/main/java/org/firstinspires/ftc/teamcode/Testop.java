@@ -5,6 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
+
+import org.apache.commons.math3.stat.descriptive.rank.Max;
+import org.apache.commons.math3.stat.descriptive.rank.Min;
+import org.opencv.core.Mat;
 
 @TeleOp
 public class Testop extends OpMode {
@@ -14,7 +19,7 @@ public class Testop extends OpMode {
     private DcMotor motorRightBack;
     private double x;
     private double y;
-    private double z;
+    private int z;
     private double TurnRate;
     private DcMotor motorSlides;
     private Servo Grijp;
@@ -27,15 +32,19 @@ public class Testop extends OpMode {
         motorLeftFront = hardwareMap.dcMotor.get("linksvoor");
         motorRightFront = hardwareMap.dcMotor.get("rechtsvoor");
         motorSlides = hardwareMap.dcMotor.get("slides");
+        motorSlides.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorSlides.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Grijp = hardwareMap.servo.get("Grijp");
         servo = 0;
+        z=0;
 
     }
 
 
     @Override
     public void start() {
-
+        motorSlides.setTargetPosition(0);
+        motorSlides.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
 
@@ -49,7 +58,9 @@ public class Testop extends OpMode {
         x = 0.5*gamepad1.left_stick_x;
         y = 0.5*gamepad1.left_stick_y;
         TurnRate = 0.5*(gamepad1.right_trigger - gamepad1.left_trigger);
-        z = gamepad2.right_trigger - gamepad2.left_trigger;
+        z = z +8*Math.round(gamepad2.left_trigger)-8*Math.round(gamepad2.right_trigger);
+        z = Math.max(-7300, z);
+        z = Math.min(0, z);
         if (gamepad2.a){
             Grijp.setPosition(1);
         }
@@ -57,11 +68,15 @@ public class Testop extends OpMode {
             Grijp.setPosition(0);
         }
 
-        motorLeftBack.setPower(x - y + TurnRate);
-        motorLeftFront.setPower(-x - y + TurnRate);
-        motorRightFront.setPower(-x + y + TurnRate);
-        motorRightBack.setPower(x + y + TurnRate);
-        motorSlides.setPower(z);
+        motorLeftBack.setPower(-x - y + TurnRate);
+        motorLeftFront.setPower(x - y + TurnRate);
+        motorRightFront.setPower(x + y + TurnRate);
+        motorRightBack.setPower(-x + y + TurnRate);
+        motorSlides.setPower(1);
+        motorSlides.setTargetPosition(z);
         // moet nog getest worden
+        telemetry.addData("liftmotor", motorSlides.getCurrentPosition());
+        telemetry.addData("z",z);
+
     }
 }
