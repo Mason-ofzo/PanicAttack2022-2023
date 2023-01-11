@@ -58,7 +58,7 @@ public class Testop extends OpMode {
         x = 0.5*gamepad1.left_stick_x;
         y = 0.5*gamepad1.left_stick_y;
         TurnRate = 0.5*(gamepad1.right_trigger - gamepad1.left_trigger);
-        z = z +8*Math.round(gamepad2.left_trigger)-8*Math.round(gamepad2.right_trigger);
+        z = z +12*Math.round(gamepad2.left_trigger)-12*Math.round(gamepad2.right_trigger);
         z = Math.max(-7300, z);
         z = Math.min(0, z);
         if (gamepad2.a){
