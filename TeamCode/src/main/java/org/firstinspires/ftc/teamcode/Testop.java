@@ -70,7 +70,7 @@ public class Testop extends OpMode {
         if (gamepad2.dpad_down){
             z = -1000;
         }
-        z = z +Math.round(8*gamepad2.left_trigger)-Math.round(8*gamepad2.right_trigger);
+        z = z +Math.round(15*gamepad2.left_trigger)-Math.round(15*gamepad2.right_trigger);
         z = Math.max(-7600, z);
         z = Math.min(0, z);
         if (gamepad2.a){
