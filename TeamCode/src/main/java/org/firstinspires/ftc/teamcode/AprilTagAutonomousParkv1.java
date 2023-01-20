@@ -158,27 +158,27 @@ public class AprilTagAutonomousParkv1 extends LinearOpMode {
         }
 
         /* Actually do something useful */
-        //Move forward
-        motorLeftFront.setPower(+1);
-        motorLeftBack.setPower(+1);
-        motorRightFront.setPower(-1);
-        motorRightBack.setPower(-1);
-        sleep(1500);
+        //Move right
+        motorLeftFront.setPower(+0.2);
+        motorLeftBack.setPower(-0.2);
+        motorRightFront.setPower(+0.2);
+        motorRightBack.setPower(-0.2);
+        sleep(15000);
         if (tagOfInterest == null || tagOfInterest.id == LEFT) {
-            // Move left
-            motorLeftFront.setPower(-1);
-            motorLeftBack.setPower(+1);
-            motorRightFront.setPower(-1);
-            motorRightBack.setPower(+1);
+            // Move back
+            motorLeftFront.setPower(-0.2);
+            motorLeftBack.setPower(-0.2);
+            motorRightFront.setPower(+0.2);
+            motorRightBack.setPower(+0.2);
             sleep(15000);
 
         } else if (tagOfInterest.id == RIGHT) {
-            // move right
-            motorLeftFront.setPower(+1);
-            motorLeftBack.setPower(-1);
-            motorRightFront.setPower(+1);
-            motorRightBack.setPower(-1);
-            sleep(1500);}
+            // move forward
+            motorLeftFront.setPower(+0.2);
+            motorLeftBack.setPower(+0.2);
+            motorRightFront.setPower(-0.2);
+            motorRightBack.setPower(-0.2);
+            sleep(15000);}
         // stop robot
         motorLeftFront.setPower(0);
         motorLeftBack.setPower(0);

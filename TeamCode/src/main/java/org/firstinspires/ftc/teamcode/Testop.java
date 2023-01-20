@@ -80,8 +80,8 @@ public class Testop extends OpMode {
             Grijp.setPosition(0);
         }
 
-        motorLeftBack.setPower(-x - y + TurnRate);
         motorLeftFront.setPower(x - y + TurnRate);
+        motorLeftBack.setPower(-x - y + TurnRate);
         motorRightFront.setPower(x + y + TurnRate);
         motorRightBack.setPower(-x + y + TurnRate);
         motorSlides.setPower(1);
