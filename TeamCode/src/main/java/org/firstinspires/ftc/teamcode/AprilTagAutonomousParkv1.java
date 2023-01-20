@@ -47,6 +47,7 @@ public class AprilTagAutonomousParkv1 extends LinearOpMode {
     private DcMotor motorRightFront;
     private DcMotor motorLeftBack;
     private DcMotor motorRightBack;
+    //private Servo Grijp;
 
     // Lens intrinsics
     // UNITS ARE PIXELS
@@ -159,27 +160,27 @@ public class AprilTagAutonomousParkv1 extends LinearOpMode {
 
         /* Actually do something useful */
         //Move right
-        motorLeftFront.setPower(+0.2);
-        motorLeftBack.setPower(-0.2);
-        motorRightFront.setPower(+0.2);
-        motorRightBack.setPower(-0.2);
-        sleep(15000);
+        motorLeftFront.setPower(+0.4);
+        motorLeftBack.setPower(-0.4);
+        motorRightFront.setPower(+0.4);
+        motorRightBack.setPower(-0.4);
+        sleep(1500);
 
         if (tagOfInterest == null || tagOfInterest.id == LEFT) {
             // Move back
-            motorLeftFront.setPower(-0.2);
-            motorLeftBack.setPower(-0.2);
-            motorRightFront.setPower(+0.2);
-            motorRightBack.setPower(+0.2);
-            sleep(15000);
+            motorLeftFront.setPower(+0.5);
+            motorLeftBack.setPower(+0.5);
+            motorRightFront.setPower(-0.4);
+            motorRightBack.setPower(-0.4);
+            sleep(1400);
 
         } else if (tagOfInterest.id == RIGHT) {
             // move forward
-            motorLeftFront.setPower(+0.2);
-            motorLeftBack.setPower(+0.2);
-            motorRightFront.setPower(-0.2);
-            motorRightBack.setPower(-0.2);
-            sleep(15000);}
+            motorLeftFront.setPower(-0.4);
+            motorLeftBack.setPower(-0.4);
+            motorRightFront.setPower(+0.4);
+            motorRightBack.setPower(+0.4);
+            sleep(1500);}
 
         // stop robot
         motorLeftFront.setPower(0);
