@@ -59,13 +59,19 @@ public class Testop extends OpMode {
         y = 0.5*gamepad1.left_stick_y;
         TurnRate = 0.5*(gamepad1.right_trigger - gamepad1.left_trigger);
         if (gamepad2.dpad_up){
-            z= -7500;
+            z= -7600;
+        }
+        if (gamepad2.dpad_left){
+            z=-6000;
+        }
+        if (gamepad2.dpad_right){
+            z=-3800;
         }
         if (gamepad2.dpad_down){
             z = -1000;
         }
-        z = z +Math.round(12*gamepad2.left_trigger)-Math.round(12*gamepad2.right_trigger);
-        z = Math.max(-7500, z);
+        z = z +Math.round(15*gamepad2.left_trigger)-Math.round(15*gamepad2.right_trigger);
+        z = Math.max(-7600, z);
         z = Math.min(0, z);
         if (gamepad2.a){
             Grijp.setPosition(1);
