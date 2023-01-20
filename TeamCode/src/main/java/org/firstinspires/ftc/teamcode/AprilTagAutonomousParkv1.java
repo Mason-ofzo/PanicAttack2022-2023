@@ -164,6 +164,7 @@ public class AprilTagAutonomousParkv1 extends LinearOpMode {
         motorRightFront.setPower(+0.2);
         motorRightBack.setPower(-0.2);
         sleep(15000);
+
         if (tagOfInterest == null || tagOfInterest.id == LEFT) {
             // Move back
             motorLeftFront.setPower(-0.2);
@@ -179,6 +180,7 @@ public class AprilTagAutonomousParkv1 extends LinearOpMode {
             motorRightFront.setPower(-0.2);
             motorRightBack.setPower(-0.2);
             sleep(15000);}
+
         // stop robot
         motorLeftFront.setPower(0);
         motorLeftBack.setPower(0);
